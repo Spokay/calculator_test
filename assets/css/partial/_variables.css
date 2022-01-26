@@ -1,0 +1,41 @@
+:root{
+    --fs_numbers: 16px;
+    --ff_spartan: 'Spartan', sans-serif;
+    --fw_bold: 700;
+    /*    theme 1     */
+    --c_t1_text_blue: hsl(221, 14%, 31%);
+    --c_t1_text_white: hsl(0, 0%, 100%);
+    --c_t1_bg_main: hsl(222, 26%, 31%);
+    --c_t1_bg_keypad: hsl(223, 31%, 20%);
+    --c_t1_bg_screen: hsl(224, 36%, 15%);
+    --c_t1_bg_keys_blue: hsl(225, 21%, 49%);
+    --c_t1_shadow_keys_blue: hsl(224, 28%, 35%);
+    --c_t1_bg_keys_red: hsl(6, 63%, 50%);
+    --c_t1_shadow_keys_red: hsl(6, 70%, 34%);
+    --c_t1_bg_keys_lightgray: hsl(30, 25%, 89%);
+    --c_t1_shadow_keys_lightgray: hsl(28, 16%, 65%);
+    /*    theme 2     */
+    --c_t2_text_dark: hsl(60, 10%, 19%);
+    --c_t2_text_white: hsl(0, 0%, 100%);
+    --c_t2_bg_main: hsl(0, 0%, 90%);
+    --c_t2_bg_keypad: hsl(0, 5%, 81%);
+    --c_t2_bg_screen: hsl(0, 0%, 93%);
+    --c_t2_bg_keys_cyan: hsl(185, 42%, 37%);
+    --c_t2_shadow_keys_cyan: hsl(185, 58%, 25%);
+    --c_t2_bg_keys_orange: hsl(25, 98%, 40%);
+    --c_t2_shadow_keys_orange: hsl(25, 99%, 27%);
+    --c_t2_bg_keys_lightgray: hsl(45, 7%, 89%);
+    --c_t2_shadow_keys_lightgray: hsl(35, 11%, 61%);
+    /*    theme 3     */
+    --c_t3_text_yellow: hsl(52, 100%, 62%);
+    --c_t3_text_darkblue: hsl(198, 20%, 13%);
+    --c_t3_text_white: hsl(0, 0%, 100%);
+    --c_t3_bg_main: hsl(268, 75%, 9%);
+    --c_t3_bg_keypad: hsl(268, 71%, 12%);
+    --c_t3_bg_keys_purple: hsl(281, 89%, 26%);
+    --c_t3_shadow_keys_purple: hsl(285, 91%, 52%);
+    --c_t3_bg_keys_cyan: hsl(176, 100%, 44%);
+    --c_t3_shadow_keys_cyan: hsl(177, 92%, 70%);
+    --c_t3_bg_keys_darkpurple: hsl(268, 47%, 21%);
+    --c_t3_shadow_keys_darkpurple: hsl(290, 70%, 36%);
+}
