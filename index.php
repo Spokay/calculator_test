@@ -4,7 +4,8 @@ if (isset($_GET) && isset($_GET['value'])){
     $type = $_GET['type'];
     $val = $_GET['value'];
     $calc = new Calculator($type, $val);
-    var_dump($calc->value . ' ' .$calc->type);
+    var_dump($calc->value.$calc->type);
+    // ouai ouai
 }
 ?>
 
