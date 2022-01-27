@@ -1,11 +1,16 @@
 <?php
+session_start();
 include('builder/Calculator.php');
 if (isset($_GET) && isset($_GET['value'])){
     $type = $_GET['type'];
     $val = $_GET['value'];
-    $calc = new Calculator($type, $val);
+    $history = $_SESSION['history'];
+    $calc = new Calculator($type, $val, $history);
+    $_SESSION['history'] .= $calc->newValue;
     var_dump($calc->value.$calc->type);
-    // ouai ouai
+    var_dump($calc->history);
+    // ouai ouaix
+    $calcVal = $calc->newValue;
 }
 ?>
 
