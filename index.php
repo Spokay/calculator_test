@@ -4,13 +4,18 @@ include('builder/Calculator.php');
 if (isset($_GET) && isset($_GET['value'])){
     $type = $_GET['type'];
     $val = $_GET['value'];
-    $history = $_SESSION['history'];
-    $calc = new Calculator($type, $val, $history);
-    $_SESSION['history'] .= $calc->newValue;
+    $firstHistory = $_SESSION['firstHistory'];
+    $secondHistory = $_SESSION['secondHistory'];
+    $thirdHistory = $_SESSION['thirdHistory'];
+    $calc = new Calculator($type, $val, $firstHistory, $secondHistory, $thirdHistory);
+    var_dump($calc->output);
+    $_SESSION['firstHistory'] = $calc->firstHistory;
+    $_SESSION['secondHistory'] = $calc->secondHistory;
+    $_SESSION['thirdHistory'] = $calc->thirdHistory;
     var_dump($calc->value.$calc->type);
-    var_dump($calc->history);
-    // ouai ouaix
-    $calcVal = $calc->newValue;
+    var_dump($calc->firstHistory. $calc->secondHistory . $calc->thirdHistory);
+    // ouai ouai
+    $calcVal = $calc->output;
 }
 ?>
 
