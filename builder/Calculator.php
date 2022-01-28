@@ -48,6 +48,10 @@ class Calculator{
                 $this->reset();
             }elseif ($this->value == 'delete'){
                 return $this->delete();
+            }elseif ($this->value == 'dot'){
+                return $this->decimals();
+            }elseif ($this->value == 'equal'){
+                return $this->result();
             }
         }
     }
@@ -64,19 +68,53 @@ class Calculator{
         if (!isset($this->secondHistory)){
             $rest = substr($this->firstHistory, 0, -1);
             $this->firstHistory = $rest;
-            var_dump('first condition');
             return $this->firstHistory;
         }
         if (isset($this->secondHistory) && !isset($this->thirdHistory)){
-            $this->secondHistory = '';
-            var_dump('scnd condition');
+            unset($this->secondHistory);
             return $this->firstHistory;
         }
         if (isset($this->secondHistory) && isset($this->thirdHistory)){
             $rest = substr($this->thirdHistory, 0, -1);
             $this->thirdHistory = $rest;
-            var_dump('third condition');
             return $this->thirdHistory;
+        }
+    }
+    public function decimals(){
+        if (!isset($this->secondHistory)){
+            $this->firstHistory .= '.';
+            return $this->firstHistory;
+        }
+        if (isset($this->secondHistory) && !isset($this->thirdHistory)){
+            unset($this->secondHistory);
+            var_dump('scnd condition');
+            $this->firstHistory .= '.';
+            return $this->firstHistory;
+        }
+        if (isset($this->thirdHistory)){
+            // to do : color the operator that is currently used
+            $this->thirdHistory .= '.';
+            return $this->thirdHistory;
+        }
+    }
+    public function result(){
+        $this->convertFloatAndInteger();
+        if ($this->secondHistory == 'plus'){
+            return ($this->firstHistory + $this->thirdHistory);
+        }elseif ($this->secondHistory == 'minus'){
+            return ($this->firstHistory - $this->thirdHistory);
+        }elseif ($this->secondHistory == 'multiplie'){
+            return ($this->firstHistory * $this->thirdHistory);
+        }elseif ($this->secondHistory == 'divide'){
+            return ($this->firstHistory / $this->thirdHistory);
+        }
+        // switch the result to the first history when finished
+    }
+    public function convertFloatAndInteger(){
+        if (str_contains($this->firstHistory, '.')){
+            $this->firstHistory = floatval($this->firstHistory);
+        }if (str_contains($this->thirdHistory, '.')){
+            $this->thirdHistory = floatval($this->thirdHistory);
         }
     }
     public function __construct($type, $value, $firstHistory, $secondHistory, $thirdHistory){
