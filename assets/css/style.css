@@ -137,6 +137,7 @@ input[type=range].custom-slider::-ms-fill-upper {
 .calculator-container > section:not(.calc-inputs){
     margin: 10px 0;
     display: flex;
+    justify-content: space-between;
 }
 .calc-themes h1{
     font-size: 2rem;
@@ -171,8 +172,7 @@ input[type=range].custom-slider::-ms-fill-upper {
     border-radius: 10px;
 }
 .calc-keypad p{
-    margin: 5px 0 5px auto;
-    align-self: flex-end;
+    margin: 5px 0;
 }
 .calc-inputs{
     display: grid;

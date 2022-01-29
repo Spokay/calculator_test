@@ -4,16 +4,16 @@ include('builder/Calculator.php');
 if (isset($_GET) && isset($_GET['value'])){
     $type = $_GET['type'];
     $val = $_GET['value'];
-    $firstHistory = $_SESSION['firstHistory'];
-    $secondHistory = $_SESSION['secondHistory'];
-    $thirdHistory = $_SESSION['thirdHistory'];
+    $firstHistory = $_SESSION['firstHistory']??'';
+    $secondHistory = $_SESSION['secondHistory']??'';
+    $thirdHistory = $_SESSION['thirdHistory']??'';
     $calc = new Calculator($type, $val, $firstHistory, $secondHistory, $thirdHistory);
     var_dump($calc->output);
     $_SESSION['firstHistory'] = $calc->firstHistory;
     $_SESSION['secondHistory'] = $calc->secondHistory;
     $_SESSION['thirdHistory'] = $calc->thirdHistory;
-    var_dump($calc->value.$calc->type);
-    var_dump($calc->firstHistory. $calc->secondHistory . $calc->thirdHistory);
+    $operator = $calc->operator;
+
     // ouai ouai
     $calcVal = $calc->output;
 }
@@ -46,6 +46,7 @@ if (isset($_GET) && isset($_GET['value'])){
             </div>
         </section>
         <section class="calc-keypad">
+            <p><?php echo $operator??''; ?></p>
             <p><?php echo $calcVal??'0'; ?></p>
         </section>
         <section class="calc-inputs">

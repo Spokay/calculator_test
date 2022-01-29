@@ -6,6 +6,7 @@ class Calculator{
     public $firstHistory;
     public $secondHistory;
     public $thirdHistory;
+    public $operator;
     public $output;
     // I must try to setup a step system with 3 steps for each calculs
     public function isNumber(){
@@ -42,6 +43,15 @@ class Calculator{
             }
         }elseif($this->isOperator()){
             $this->secondHistory = $this->value;
+            if ($this->secondHistory == 'plus'){
+                $this->operator = '+';
+            }elseif ($this->secondHistory == 'minus'){
+                $this->operator = '-';
+            }elseif ($this->secondHistory == 'multiplie'){
+                $this->operator = 'x';
+            }elseif ($this->secondHistory == 'divide'){
+                $this->operator = '%';
+            }
             return $this->firstHistory;
         }elseif($this->isTool()){
             if ($this->value == 'reset'){
@@ -87,7 +97,7 @@ class Calculator{
         }
         if (isset($this->secondHistory) && !isset($this->thirdHistory)){
             unset($this->secondHistory);
-            var_dump('scnd condition');
+//            var_dump('scnd condition');
             $this->firstHistory .= '.';
             return $this->firstHistory;
         }
@@ -99,16 +109,21 @@ class Calculator{
     }
     public function result(){
         $this->convertFloatAndInteger();
+        $res = 0;
         if ($this->secondHistory == 'plus'){
-            return ($this->firstHistory + $this->thirdHistory);
+            $res = ($this->firstHistory + $this->thirdHistory);
         }elseif ($this->secondHistory == 'minus'){
-            return ($this->firstHistory - $this->thirdHistory);
+            $res = ($this->firstHistory - $this->thirdHistory);
         }elseif ($this->secondHistory == 'multiplie'){
-            return ($this->firstHistory * $this->thirdHistory);
+            $res = ($this->firstHistory * $this->thirdHistory);
         }elseif ($this->secondHistory == 'divide'){
-            return ($this->firstHistory / $this->thirdHistory);
+            $res = ($this->firstHistory / $this->thirdHistory);
         }
         // switch the result to the first history when finished
+        $this->firstHistory = $res;
+        $this->secondHistory = '';
+        $this->thirdHistory = '';
+        return $res;
     }
     public function convertFloatAndInteger(){
         if (str_contains($this->firstHistory, '.')){
@@ -118,6 +133,7 @@ class Calculator{
         }
     }
     public function __construct($type, $value, $firstHistory, $secondHistory, $thirdHistory){
+        var_dump($firstHistory.$secondHistory.$thirdHistory);
         $this->value = $value;
         $this->type = $type;
         $this->firstHistory = $firstHistory;

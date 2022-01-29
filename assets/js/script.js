@@ -1,19 +1,5 @@
 let keyboardElements = document.querySelectorAll('.keyboard-element');
-let actualKey;
-for(let keyIndex = 0; keyIndex < keyboardElements.length; keyIndex++){
-    keyboardElements[keyIndex].addEventListener('click', getButtonValue);
-}
 
-function getButtonValue(){
-    let buttonValue = this.innerText;
-    console.log(buttonValue);
-    if(!isNaN(buttonValue)){
-        buttonValue = parseInt(buttonValue);
-        console.log(typeof(buttonValue));
-    }
-    return buttonValue;
-}
-actualKey = getButtonValue();
 
     function filterme(value) {
         value = parseInt(value, 10); // Convert to an integer
